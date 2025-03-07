@@ -1,11 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>cards</title>
-</head>
-<body>
-    
-</body>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .card {
+        width: 25%;
+        height: 80vh;
+        border: solid red;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 20px;
+        gap: 1px;
+        padding: 10px;
+        -webkit-box-shadow: 4px -4px 15px 0px #ff1f1f,
+          12px -11px 7px 0px #ff9376, 20px -5px 7px 0px #ffe264,
+          20px 6px 7px 0px #f6ff33, 13px 12px 17px 0px #ff9527,
+          2px 17px 17px 0px #ff0000, -9px 21px 18px 0px #fff212,
+          -9px 6px 11px 0px #ff0808, -11px -9px 11px 0px #fffa17,
+          -11px -9px 11px 0px #fffa17, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+        box-shadow: 4px -4px 15px 0px #ff1f1f, 12px -11px 7px 0px #ff9376,
+          20px -5px 7px 0px #ffe264, 20px 6px 7px 0px #f6ff33,
+          13px 12px 17px 0px #ff9527, 2px 17px 17px 0px #ff0000,
+          -9px 21px 18px 0px #fff212, -9px 6px 11px 0px #ff0808,
+          -11px -9px 11px 0px #fffa17, -11px -9px 11px 0px #fffa17,
+          5px 5px 15px 5px rgba(0, 0, 0, 0);
+      }
+      .card img {
+        height: 50%;
+        width: 95%;
+        border-radius: 20px;
+      }
+      p {
+        font-size: 20px;
+      }
+      .div1 {
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      /* From Uiverse.io by Mike11jr */
+      .btn {
+        padding: 1.1em 2em;
+        background: none;
+        border: 2px solid #fff;
+        font-size: 15px;
+        color: #131313;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s;
+        border-radius: 12px;
+        background-color: #ecd448;
+        font-weight: bolder;
+        box-shadow: 0 2px 0 2px #000;
+      }
+
+      .btn:before {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 120%;
+        background-color: #ff6700;
+        top: 50%;
+        transform: skewX(30deg) translate(-150%, -50%);
+        transition: all 0.5s;
+      }
+
+      .btn:hover {
+        background-color: #4cc9f0;
+        color: #fff;
+        box-shadow: 0 2px 0 2px #0d3b66;
+      }
+
+      .btn:hover::before {
+        transform: skewX(30deg) translate(150%, -50%);
+        transition-delay: 0.1s;
+      }
+
+      .btn:active {
+        transform: scale(0.9);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <img src="shoes-2074400.jpg" alt="" />
+        <h1>Nike Air Max</h1>
+
+        <p>
+          Elevate your style with the perfect blend of comfort and performance.
+          Featuring breathable mesh, responsive cushioning, and a sleek design
+          for everyday wear.
+        </p>
+        <div class="div1">
+          <button class="btn">Buy</button>
+          <button class="btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
