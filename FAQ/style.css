@@ -1,12 +1,13 @@
 body {
-  background-color: #ffffff;
+  background:linear-gradient(135deg,rgb(235, 245, 49),rgb(1, 113, 241));
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+  justify-content: space-between;
+  flex-direction: column;
+  
 }
 h1 {
   font-size: 36px;
@@ -18,21 +19,27 @@ h2 {
 }
 
 .heading {
-  border: solid red;
   background-color: #ffffff;
   margin: 40px;
   padding: 20px;
-  
-
- 
- 
-
+  color: white;
+  background:radial-gradient(circle,rgb(20, 50, 248),rgb(104, 195, 245));
+  text-align: center;
 }
 
-#box1{
-    border: solid red;
-    background-color: #f8fafc;
-    margin: 30px;
-    padding: 40px;
+#box1 {
+  background: linear-gradient(135deg, rgb(134, 164, 255), rgb(239, 239, 114));
+  margin: 30px;
+  padding: 40px;
+  
+}
 
+.topdiv {
+  margin: 40px;
+  padding: 20px;
+  background-color:rgb(172, 198, 241);
+}
+.footer{
+    margin-left: 60px;
+    
 }
