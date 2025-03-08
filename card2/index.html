@@ -26,7 +26,7 @@
       }
       .card {
         width: 20%;
-        height: 60%;
+        height: 70%;
         background-color: #fff;
         border-radius: 20px;
         display: flex;
@@ -105,9 +105,26 @@
         height: 100%;
       }
       .button {
-        background: linear-gradient(to right, red, black);
-        color: white;
-        font-size: 15px;
+        background-color: #ffffff00;
+        color: #fff;
+        width: 8.5em;
+        height: 30px;
+        border: #3654ff 0.2em solid;
+        border-radius: 11px;
+      }
+      .button:hover {
+        background-color: #3654ff;
+        cursor: pointer;
+      }
+      button svg {
+        width: 1.6em;
+        margin: -0.2em 0.8em 1em;
+        position: absolute;
+        display: flex;
+        transition: all 0.6s ease;
+      }
+      .button:hover svg {
+        transform: translateX(5px);
       }
     </style>
   </head>
