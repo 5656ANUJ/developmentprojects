@@ -1,5 +1,5 @@
 body {
-  background:linear-gradient(135deg,rgb(235, 245, 49),rgb(1, 113, 241));
+  background-color: #ffffff;
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -22,13 +22,13 @@ h2 {
   background-color: #ffffff;
   margin: 40px;
   padding: 20px;
-  color: white;
-  background:radial-gradient(circle,rgb(20, 50, 248),rgb(104, 195, 245));
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
   text-align: center;
 }
 
 #box1 {
-  background: linear-gradient(135deg, rgb(134, 164, 255), rgb(239, 239, 114));
+  background-color: rgb(255, 252, 228);
   margin: 30px;
   padding: 40px;
   
@@ -37,7 +37,7 @@ h2 {
 .topdiv {
   margin: 40px;
   padding: 20px;
-  background-color:rgb(172, 198, 241);
+  background-color:rgb(242, 246, 250);
 }
 .footer{
     margin-left: 60px;
