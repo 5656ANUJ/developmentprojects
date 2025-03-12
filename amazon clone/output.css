@@ -8,7 +8,6 @@
       "Courier New", monospace;
     --color-red-500: oklch(0.637 0.237 25.331);
     --color-orange-300: oklch(0.837 0.128 66.29);
-    --color-gray-950: oklch(0.13 0.028 261.692);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -457,9 +456,6 @@
   .min-h-screen {
     min-height: 100vh;
   }
-  .w-1 {
-    width: calc(var(--spacing) * 1);
-  }
   .w-1\/2 {
     width: calc(1/2 * 100%);
   }
@@ -468,9 +464,6 @@
   }
   .w-24 {
     width: calc(var(--spacing) * 24);
-  }
-  .w-\[780\] {
-    width: 780;
   }
   .w-\[780px\] {
     width: 780px;
@@ -864,6 +857,9 @@
   .justify-items-stretch {
     justify-items: stretch;
   }
+  .gap-1 {
+    gap: calc(var(--spacing) * 1);
+  }
   .space-y-reverse {
     :where(& > :not(:last-child)) {
       --tw-space-y-reverse: 1;
@@ -871,9 +867,6 @@
   }
   .gap-x-1 {
     column-gap: calc(var(--spacing) * 1);
-  }
-  .gap-x-1\.5 {
-    column-gap: calc(var(--spacing) * 1.5);
   }
   .space-x-reverse {
     :where(& > :not(:last-child)) {
@@ -963,9 +956,6 @@
   }
   .rounded {
     border-radius: 0.25rem;
-  }
-  .rounded-lg {
-    border-radius: var(--radius-lg);
   }
   .rounded-s {
     border-start-start-radius: 0.25rem;
@@ -1098,14 +1088,11 @@
   .bg-\[\#0088cc\] {
     background-color: #0088cc;
   }
-  .bg-\[\#\] {
-    background-color: #;
+  .bg-\[\#222F3D\] {
+    background-color: #222F3D;
   }
   .bg-\[\#e6e6e6\] {
     background-color: #e6e6e6;
-  }
-  .bg-\[\#e\] {
-    background-color: #e;
   }
   .bg-\[color\:var\(--my-color\)\] {
     background-color: var(--my-color);
@@ -1113,8 +1100,8 @@
   .bg-\[var\(--my_variable\)\] {
     background-color: var(--my_variable);
   }
-  .bg-gray-950 {
-    background-color: var(--color-gray-950);
+  .bg-black {
+    background-color: var(--color-black);
   }
   .bg-orange-300 {
     background-color: var(--color-orange-300);
@@ -1896,14 +1883,6 @@
   }
   .transform-view {
     transform-box: view-box;
-  }
-  .hover\:border {
-    &:hover {
-      @media (hover: hover) {
-        border-style: var(--tw-border-style);
-        border-width: 1px;
-      }
-    }
   }
   .hover\:border-white {
     &:hover {
