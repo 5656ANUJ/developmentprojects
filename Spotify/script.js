@@ -12,60 +12,60 @@ let songs = [
   {
     songName: "Ajeeb-O-Gareeb",
     filePath: "Music/Ajeeb-O-Gareeb.mp3",
-    coverPath: "covers/1.jpg",
+    coverPath: "assets/covers/1.jpg",
   },
   {
     songName: "Ishq Hai",
     filePath: "Music/Ishq Hai.mp3",
-    coverPath: "covers/2.jpg",
+    coverPath: "assets/covers/2.jpg",
   },
   {
     songName: "Kesariya",
     filePath: "Music/Kesariya.mp3",
-    coverPath: "covers/3.jpg",
+    coverPath: "assets/covers/3.jpg",
   },
   {
     songName: "Kho Gaye",
     filePath: "Music/Kho Gaye.mp3",
-    coverPath: "covers/4.jpg",
+    coverPath: "assets/covers/4.jpg",
   },
   {
     songName: "Rang",
     filePath: "Music/Rang.mp3",
-    coverPath: "covers/5.jpg",
+    coverPath: "assets/covers/5.jpg",
   },
   {
     songName: "Satranga",
     filePath: "Music/Satranga.mp3",
-    coverPath: "covers/6.jpg",
+    coverPath: "assets/covers/6.jpg",
   },
   {
     songName: "Soni Soni",
     filePath: "Music/Soni Soni.mp3",
-    coverPath: "covers/7.jpg",
+    coverPath: "assets/covers/7.jpg",
   },
   {
     songName: "Triple OG",
     filePath: "Music/Triple OG.mp3",
-    coverPath: "covers/8.jpg",
+    coverPath: "assets/covers/8.jpg",
   },
   {
     songName: "Tu Hain Toh Main Hoon",
     filePath: "Music/Tu Hain Toh Main Hoon.mp3",
-    coverPath: "covers/9.jpg",
+    coverPath: "assets/covers/9.jpg",
   },
   {
     songName: "YEDA YUNG",
     filePath: "Music/YEDA YUNG.mp3",
-    coverPath: "covers/10.jpg",
+    coverPath: "assets/covers/10.jpg",
   },
 ];
 
-// // Set song details in the UI
-// songItems.forEach((element, i) => {
-//   element.getElementsByTagName("img")[0].src = song[i].coverPath;
-//   element.getElementsByClassName("songName")[0].innerText = song [i].songName;
-// });
+// Set song details in the UI
+songItems.forEach((element, i) => {
+  element.getElementsByTagName("img")[0].src = songs[i].coverPath;
+  element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
+});
 
 // Handle play/pause click
 masterPlay.addEventListener("click", () => {
@@ -96,3 +96,21 @@ myProgressBar.addEventListener("input", () => {
     audioElement.currentTime = (myProgressBar.value * audioElement.duration) / 100;
   }
 });
+
+const makeAllPlays = ()=>{
+  
+  Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
+    element.classList.remove('fa-pause')
+    element.classList.add('fa-play')
+  })
+}
+
+Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
+  element.addEventListener('click',(e)=>{
+    makeAllPlays();
+    e.target.classList.remove('fa-play')
+    e.target.classList.add('fa-pause')
+
+
+  })
+})
