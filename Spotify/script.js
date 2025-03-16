@@ -110,6 +110,7 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) =>
     makeAllPlays();
     e.target.classList.remove('fa-play')
     e.target.classList.add('fa-pause')
+    audioElement.src= Music/
 
 
   })
