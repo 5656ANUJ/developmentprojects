@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="output.css" />
+  </head>
+  <body class="bg-gray-900 flex justify-center items-center min-h-screen">
+    <div class="grid grid-cols-1 md:grid-cols-[30%_70%] gap-8 p-6 w-full max-w-6xl">
+      <!-- Left Panel (To-Do Input) -->
+      <div class="bg-gray-700 text-white p-6 h-auto rounded-3xl shadow-lg flex flex-col">
+        <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-yellow-400 to-red-500 text-transparent bg-clip-text text-center p-3 rounded-lg">
+          To-Do List
+        </h1>
+        <div class="flex flex-col items-center mt-6 space-y-4">
+          <input
+            type="text"
+            id="taskInput"
+            placeholder="Enter the task..."
+            class="bg-gray-600 w-[85%] md:w-[80%] h-12 px-5 text-white text-lg rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          />
+          <button
+            id="addTaskBtn"
+            class="w-[85%] md:w-[80%] bg-gradient-to-r from-yellow-400 to-red-500 text-white text-lg font-semibold px-6 py-3 rounded-lg 
+            border-b-[4px] border-red-600 transition-all duration-200 ease-in-out 
+            hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] 
+            active:border-b-[2px] active:brightness-90 active:translate-y-[2px] shadow-md cursor-pointer"
+          >
+            + Add Task
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Panel (Tasks Display) -->
+      <div class="bg-gray-700 text-white p-6 h-auto rounded-3xl shadow-lg flex flex-col items-center overflow-y-auto">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4">Your Tasks</h2>
+        <div id="taskList" class="w-full flex flex-col items-center space-y-4">
+          <!-- Task items will appear here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
+  </body>
+</html>
