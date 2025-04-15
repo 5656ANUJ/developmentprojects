@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Papa!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .date-option {
+            transition: all 0.3s ease;
+        }
+        .date-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .memory-reveal {
+            animation: fadeIn 0.5s forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 font-poppins">
+    <!-- Confetti container -->
+    <div id="confetti-container"></div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="container mx-auto px-4 py-8">
+        <h1 class="text-5xl md:text-7xl text-center py-8 font-dancing font-bold text-yellow-300">
+            Happy Birthday Papa!
+        </h1>
+        
+        <div class="flex justify-center my-8">
+            <div class="relative group">
+                <div class="absolute -inset-2 bg-yellow-400 rounded-full blur-md opacity-75 group-hover:opacity-100"></div>
+                <img src="assets/5.jpg" class="relative object-cover h-64 w-64 md:h-80 md:w-80 rounded-full border-8 border-yellow-300 shadow-xl transform group-hover:scale-105 transition-transform duration-300" alt="Birthday Image">
+            </div>
+        </div>
+        
+        <div class="max-w-2xl mx-auto text-center text-white px-4 py-6 rounded-xl bg-gradient-to-r from-blue-800/40 to-purple-800/40 backdrop-blur-sm mb-12">
+            <p class="text-xl md:text-2xl font-medium mb-4">Guess family birthdays to reveal special memories!</p>
+        </div>
+        
+        <!-- Birthday Game -->
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-2xl mx-auto">
+            <h2 class="text-3xl font-baloo text-center mb-6 text-yellow-300">Family Birthday Guessing Game</h2>
+            <p class="text-white text-center mb-6">Click on the correct birthday dates of our family members</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                <!-- Date options will be added here by JS -->
+            </div>
+            
+            <!-- Memory Reveal Area -->
+            <div id="memoryReveal" class="hidden bg-white rounded-lg p-6 shadow-lg memory-reveal text-center">
+                <img id="revealedImage" src="assets/1.jpg" alt="Memory" class="mx-auto mb-4 rounded-lg max-h-64">
+                <p id="revealedMessage" class="text-gray-800 font-medium"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Family birthdays and associated memories
+        const familyBirthdays = [
+            {
+                name: "Papa",
+                date: "April 16",
+                memory: {
+                    image: "assets/1.jpg",
+                    message: "Papa's special day! We love you so much!"
+                }
+            },
+            {
+                name: "Mama",
+                date: "July 22", 
+                memory: {
+                    image: "assets/mama-memory.jpg",
+                    message: "Mama's birthday - the heart of our family!"
+                }
+            },
+            {
+                name: "Grandpa",
+                date: "November 5",
+                memory: {
+                    image: "assets/grandpa-memory.jpg", 
+                    message: "Grandpa's wisdom day - always guiding us!"
+                }
+            },
+            {
+                name: "Grandma",
+                date: "February 28",
+                memory: {
+                    image: "assets/grandma-memory.jpg",
+                    message: "Grandma's special day full of love!"
+                }
+            }
+        ];
+
+        // Some wrong date options
+        const wrongDates = ["March 15", "May 20", "September 3", "December 10", "January 7"];
+        
+        // Initialize the game
+        function setupGame() {
+            const gameContainer = document.querySelector('.grid');
+            gameContainer.innerHTML = '';
+            
+            // Create date options (3 correct, 3 wrong)
+            const allDates = [
+                ...familyBirthdays.map(b => ({date: b.date, isCorrect: true})),
+                ...wrongDates.map(d => ({date: d, isCorrect: false}))
+            ];
+            
+            // Shuffle the dates
+            allDates.sort(() => Math.random() - 0.5);
+            
+            // Create buttons for each date
+            allDates.slice(0, 6).forEach(dateObj => {
+                const button = document.createElement('button');
+                button.className = 'date-option bg-gradient-to-r from-yellow-400 to-yellow-600 text-gray-900 font-bold py-3 px-4 rounded-lg shadow-md hover:shadow-lg';
+                button.textContent = dateObj.date;
+                
+                if (dateObj.isCorrect) {
+                    button.dataset.correct = 'true';
+                    const birthday = familyBirthdays.find(b => b.date === dateObj.date);
+                    button.dataset.memory = JSON.stringify(birthday.memory);
+                }
+                
+                button.addEventListener('click', handleDateClick);
+                gameContainer.appendChild(button);
+            });
+        }
+        
+        // Handle date selection
+        function handleDateClick(event) {
+            const button = event.currentTarget;
+            
+            if (button.dataset.correct === 'true') {
+                // Correct date - reveal memory
+                button.classList.remove('from-yellow-400', 'to-yellow-600');
+                button.classList.add('from-green-400', 'to-green-600', 'text-white');
+                
+                const memory = JSON.parse(button.dataset.memory);
+                document.getElementById('revealedImage').src = memory.image;
+                document.getElementById('revealedMessage').textContent = memory.message;
+                document.getElementById('memoryReveal').classList.remove('hidden');
+                
+                createConfetti();
+            } else {
+                // Wrong date
+                button.classList.remove('from-yellow-400', 'to-yellow-600');
+                button.classList.add('from-red-400', 'to-red-600', 'text-white');
+                setTimeout(() => {
+                    button.classList.remove('from-red-400', 'to-red-600', 'text-white');
+                    button.classList.add('from-yellow-400', 'to-yellow-600', 'text-gray-900');
+                }, 1000);
+            }
+        }
+        
+        // Confetti effect
+        function createConfetti() {
+            const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#FF9800', '#FF5722'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'fixed rounded-full';
+                confetti.style.width = `${Math.random() * 10 + 5}px`;
+                confetti.style.height = confetti.style.width;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.top = '-10px';
+                confetti.style.opacity = Math.random() + 0.5;
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                
+                document.getElementById('confetti-container').appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+        
+        // Start the game when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            setupGame();
+            
+            // Add fall animation
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes fall {
+                    to {
+                        transform: translateY(100vh) rotate(360deg);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
